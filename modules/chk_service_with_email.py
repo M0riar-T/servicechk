@@ -10,7 +10,7 @@ from logging.handlers import RotatingFileHandler
 import traceback
 import sendanemail as mail
 
-def chk_service(service,logfile,run_cmd):
+def chk_service(service,logfile,run_cmd,emailid):
     logger = logging.getLogger(__name__)
     logger.setLevel(logging.DEBUG)
     handler = RotatingFileHandler(logfile, maxBytes=20000, backupCount=5)
@@ -24,7 +24,6 @@ def chk_service(service,logfile,run_cmd):
     if output == 0:
         cmd = subprocess.run([run_cmd], shell=True, capture_output=True, text=True)
         logger.debug('{} is NOT running, Starting it now :: \n%s :: \n%s\n :: Detailed Exception - %s'.format(service),cmd.stdout, cmd.stderr,traceback.format_exc())
-        sentmail = mail.sendanemail("dark.pearl007@gmail.com", "The {} status was : {}".format(service, output),
-                                    logfile)
+        sentmail = mail.sendanemail(emailid, "The {} status was : {}".format(service, output),logfile)
 
     return output
