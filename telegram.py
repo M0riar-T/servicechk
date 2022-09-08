@@ -2,6 +2,8 @@
 # if the service was already running it will return any non zero value
 # this will also create / or log in the existing log files with the returned output of the cmd
 # RUN THIS AS A ROOT NO OTHER USER CAN RUN AND WRITE LOGS FOR THIS SCRIPT
+# https://www.rahielkasim.com/telegram-send/docs/
+# https://medium.com/@robertbracco1/how-to-write-a-telegram-bot-to-send-messages-with-python-bcdf45d0a580
 
 
 import os
